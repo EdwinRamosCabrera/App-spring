@@ -1,18 +1,17 @@
 package com.example.spring.Controllers;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @Controller
 public class HomeController {
+
+    private static final String HOME_INDEX = "home/welcome";
 
     @GetMapping("/")
     public String homePage(Model model){
         model.addAttribute("message", "Curso de Spring");
-        return "home/welcome";
+        return HOME_INDEX;
     } 
 }
