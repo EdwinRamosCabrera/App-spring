@@ -1,4 +1,4 @@
-package com.example.spring.Model;
+package com.example.spring.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,7 +21,7 @@ import lombok.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotNull
     private String description;
