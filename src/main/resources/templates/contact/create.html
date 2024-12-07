@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'contact')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Contactos</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 mt-5">
+                <div class="form-group row">
+                    <h1>Creación de Contactos</h1>
+                </div>
+                <form th:action="@{/contact/create}" th:object="${contact}" method="post">
+                    <div class="form-group">
+                        <label for="name">Nombres:</label>
+                        <input th:field="*{name}" id="name" placeholder="Escribe tu nombre y apellido" type="text" class="form-control" required />
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo:</label>
+                        <input th:field="*{email}" id="email" placeholder="ejemplo@ejemplo.com" type="email" class="form-control" data-inputmask="'alias': 'email'"
+                        autocomplete="off" required />
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono:</label>
+                        <input th:field="*{phone}" id="phone" data-inputmask="'mask': '(99) 999999999'" type="tel" class="form-control" />
+                        <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Asunto:</label>
+                        <input th:field="*{reason}" id="reason" placeholder="Escribe el Asunto" type="text" class="form-control" required />
+                        <p th:if="${#fields.hasErrors('reason')}" th:errors="*{reason}"></p>
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Mensaje:</label>
+                        <textarea th:field="*{comments}" id="comments" name="comments" cols="22" rows="4" class="form-control" required ></textarea>
+                        <p th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}"></p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+                <p th:text="${message}"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap-datepicker/js/bootstrap-datepicker.min.js}"></script>
+    <script th:src="@{/webjars/jquery.inputmask/jquery.inputmask.min.js}"></script>    
+
+    <script>
+      $('.input-group.date').datepicker({
+        autoclose: true,
+        todayHighlight: true
+      });
+    </script>
+    <script>
+      $(":input").inputmask();
+    </script>
+    
+</body>
+</html>

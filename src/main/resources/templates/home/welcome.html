@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
@@ -7,5 +7,10 @@
 <body>
     <h1>Bienvenidos a nuestra App</h1>
     <p th:text="${message}"></p>
+    <div class="row">
+        <div class="col-md-10">
+          <img class="img-responsive" src="../static/resources/images/licores.png" th:src="@{/resources/images/licores.png}"/>
+        </div>
+    </div>
 </body>
 </html>
